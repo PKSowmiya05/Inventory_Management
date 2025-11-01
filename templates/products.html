@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<h2>Products</h2>
+<a class="btn" href="{{ url_for('add_product') }}">+ Add Product</a>
+<table>
+  <tr><th>ID</th><th>Product Name</th><th>Quantity</th><th>Location</th><th>Actions</th></tr>
+  {% for p in products %}
+    <tr>
+      <td>{{ p.id }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ p.quantity }}</td>
+      <td>{{ p.location.name if p.location else '---' }}</td>
+      <td>
+        <a href="{{ url_for('edit_product', id=p.id) }}">Edit</a> |
+        <form action="{{ url_for('delete_product', id=p.id) }}" method="POST" style="display:inline;">
+          <button class="link-btn" type="submit" onclick="return confirm('Delete product?')">Delete</button>
+        </form>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="5">No products yet.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

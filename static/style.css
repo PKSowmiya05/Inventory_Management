@@ -1,0 +1,241 @@
+
+/* Layout basics: keep footer at the bottom and navbar at top */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  /* Theme defaults */
+  background: var(--secondary-bg);
+  color: var(--text-dark);
+  margin: 0; /* let header/footer span full width */
+}
+/* Theme variables */
+:root {
+  --primary-bluegray: #4C7C89; /* headers, highlights */
+  --secondary-bg: #F8F9FA; /* main page background */
+  --nav-hero-bg: rgba(0,0,0,0.6); /* navbar over hero */
+  --btn-primary: #FF8C00; /* primary orange */
+  --btn-primary-hover: #E67E00;
+  --accent-teal: #00A8B5;
+  --text-dark: #333333;
+  --text-light: #ffffff;
+}
+/* subtle page background image only on home page (replace static/home-bg.svg to change) */
+body.home-page {
+  background-image: url('/static/bg.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative; /* allow absolute overlay inside home */
+  /* leave space for the fixed/semi-transparent navbar so content doesn't sit under it */
+  padding-top: 72px;
+}
+
+/* Make the navbar blend with the home background (transparent overlay) */
+body.home-page nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: var(--nav-hero-bg);
+  border-bottom: none;
+  z-index: 15;
+}
+body.home-page nav a {
+  color: var(--text-light);
+}
+
+/* Page-specific button color for hero area (keeps the home overlay buttons bright orange) */
+body.home-page .btn,
+body.home-page .btn.small {
+  background: var(--btn-primary);
+  color: var(--text-light);
+}
+body.home-page .btn:hover,
+body.home-page .btn.small:hover {
+  background: var(--btn-primary-hover);
+}
+nav {
+  margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  /* default navbar for non-hero pages: use primary blue-gray */
+  background: var(--primary-bluegray);
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  z-index: 10;
+}
+nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  margin-right: 12px;
+}
+nav a:hover {
+  text-decoration: underline;
+  color: var(--accent-teal);
+}
+.container {
+  flex: 1 0 auto; /* expand to push footer down */
+  margin: 20px;
+}
+table {
+  width: 90%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background: #fff;
+}
+th, td {
+  border: 1px solid #eee;
+  padding: 8px;
+  text-align: center;
+}
+th {
+  background: var(--primary-bluegray);
+  color: var(--text-light);
+}
+.btn {
+  background: var(--btn-primary);
+  color: var(--text-light);
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--btn-primary-hover);
+}
+
+.btn.small {
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+/* Home page specific styles */
+.home-center {
+  text-align: center;
+  max-width: 800px;
+  margin: 40px auto;
+  /* translucent panel to keep text/buttons readable on top of the bg */
+  background: rgba(248,249,250,0.86);
+  padding: 28px 24px;
+  border-radius: 8px;
+}
+.home-image {
+  display: block;
+  margin: 0 auto 20px auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.home-overlay-buttons {
+  position: absolute;
+  /* place below the fixed nav so both are visible */
+  top: 72px;
+  left: 18px;
+  z-index: 20;
+}
+
+/* footer removed per user preference */
+.link-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent-teal);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Form card + horizontal label layout for Add/Edit pages
+   Targets containers that contain an H2 followed by a form (most add/edit views).
+   Uses :has() to avoid affecting list/table pages. Modern browsers support :has;
+   a media query falls back to stacked labels on narrow screens. */
+.container:has(> h2 + form) {
+  display: flex;
+  flex-direction: column; /* stack heading above the form */
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 160px);
+}
+.container:has(> h2 + form) form {
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(20,30,40,0.08);
+  box-sizing: border-box;
+}
+/* hide the <br> used in templates so labels can sit inline */
+.container:has(> h2 + form) form br {
+  display: none;
+}
+/* Label left, input/select right on same line */
+.container:has(> h2 + form) form label {
+  display: inline-block;
+  width: 140px;
+  margin-right: 12px;
+  text-align: left;
+  vertical-align: middle;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+.container:has(> h2 + form) form input,
+.container:has(> h2 + form) form select {
+  display: inline-block;
+  width: calc(100% - 160px);
+  vertical-align: middle;
+  padding: 8px 10px;
+  border: 1px solid #e6e9eb;
+  border-radius: 6px;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+/* keep spacing between pairs */
+.container:has(> h2 + form) form label + input,
+.container:has(> h2 + form) form label + select {
+  margin-bottom: 12px;
+}
+/* Buttons centered below the form */
+.container:has(> h2 + form) form .btn {
+  display: block;
+  width: auto;
+  margin: 18px auto 0 auto;
+}
+/* small screens: stack labels above inputs */
+@media (max-width: 640px) {
+  .container:has(> h2 + form) {
+    align-items: flex-start;
+    padding-top: 20px;
+    min-height: auto;
+  }
+  .container:has(> h2 + form) form label {
+    display: block;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+  .container:has(> h2 + form) form input,
+  .container:has(> h2 + form) form select {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Headings for add/edit forms: centered above the form with gentle spacing */
+.container:has(> h2 + form) > h2 {
+  text-align: center;
+  margin: 0 0 18px 0; /* space between heading and card/form */
+  font-weight: 700;
+  font-size: 24px; /* human-friendly size between 22-26px */
+  color: var(--primary-bluegray);
+}
+.flash {
+  background: #e6ffed;
+  border-left: 5px solid #33a852;
+  padding: 8px;
+  margin-bottom: 10px;
+  list-style: none;
+  width: 60%;
+}

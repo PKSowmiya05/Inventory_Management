@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Report{% endblock %}
+{% block content %}
+<h2>Inventory Report</h2>
+
+<table>
+  <tr><th>Product</th><th>Location</th><th>Available Qty</th></tr>
+  {% for r in report %}
+    <tr>
+      <td>{{ r.product_name }}</td>
+      <td>{{ r.location_name }}</td>
+      <td>{{ r.qty }}</td>
+    </tr>
+  {% else %}
+    <tr><td colspan="3">No stock data yet.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

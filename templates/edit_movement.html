@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Edit Movement{% endblock %}
+{% block content %}
+<h2>Edit Movement</h2>
+<form method="POST">
+  <label>Product</label><br>
+  <select name="product" required>
+    {% for p in products %}
+      <option value="{{ p.id }}" {% if movement.product_id == p.id %}selected{% endif %}>{{ p.name }}</option>
+    {% endfor %}
+  </select><br><br>
+
+  <label>From (leave empty if incoming)</label><br>
+  <select name="from_location">
+    <option value="">-- None --</option>
+    {% for l in locations %}
+      <option value="{{ l.id }}" {% if movement.from_location == l.id %}selected{% endif %}>{{ l.name }}</option>
+    {% endfor %}
+  </select><br><br>
+
+  <label>To (leave empty if outgoing)</label><br>
+  <select name="to_location">
+    <option value="">-- None --</option>
+    {% for l in locations %}
+      <option value="{{ l.id }}" {% if movement.to_location == l.id %}selected{% endif %}>{{ l.name }}</option>
+    {% endfor %}
+  </select><br><br>
+
+  <label>Quantity</label><br>
+  <input type="number" name="qty" min="1" value="{{ movement.qty }}" required><br><br>
+
+  <button class="btn" type="submit">Update Movement</button>
+  <a href="{{ url_for('move_product') }}" class="btn" style="background:#6c757d; margin-left:8px;">Cancel</a>
+</form>
+{% endblock %}

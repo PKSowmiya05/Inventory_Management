@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Add Movement{% endblock %}
+{% block content %}
+<h2>Record Movement</h2>
+<form method="POST">
+  <label>Product</label><br>
+  <!-- Free-text product entry. You may enter an existing product id or product name. -->
+  <input type="text" name="product" placeholder="Product name or id" required><br><br>
+
+  <label>From (leave empty if incoming)</label><br>
+  <!-- Enter location name or id; leave blank for none -->
+  <input type="text" name="from_location" placeholder="Location name or id"><br><br>
+
+  <label>To (leave empty if outgoing)</label><br>
+  <!-- Enter location name or id; leave blank for none -->
+  <input type="text" name="to_location" placeholder="Location name or id"><br><br>
+
+  <label>Quantity</label><br>
+  <input type="number" name="qty" min="1" required><br><br>
+
+  <button class="btn" type="submit">Save Movement</button>
+</form>
+{% endblock %}

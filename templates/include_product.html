@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Add Product{% endblock %}
+{% block content %}
+<h2>Add Product</h2>
+<form method="POST">
+  <label>Name</label><br>
+  <input type="text" name="name" required><br><br>
+
+  <label>Quantity</label><br>
+  <input type="number" name="quantity" min="0" value="0"><br><br>
+
+  <label>Location</label><br>
+  <select name="location">
+    <option value="">-- None --</option>
+    {% for l in locations %}
+      <option value="{{ l.id }}">{{ l.name }}</option>
+    {% endfor %}
+  </select><br><br>
+
+  <button class="btn" type="submit">Save Product</button>
+</form>
+{% endblock %}

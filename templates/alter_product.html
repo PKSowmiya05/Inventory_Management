@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Edit Product{% endblock %}
+{% block content %}
+<h2>Edit Product</h2>
+<form method="POST">
+  <label>Name</label><br>
+  <input type="text" name="name" value="{{ product.name }}" required><br><br>
+  <label>Quantity</label><br>
+  <input type="number" name="quantity" min="0" value="{{ product.quantity }}"><br><br>
+
+  <label>Location</label><br>
+  <select name="location">
+    <option value="">-- None --</option>
+    {% for l in locations %}
+      <option value="{{ l.id }}" {% if product.location_id == l.id %}selected{% endif %}>{{ l.name }}</option>
+    {% endfor %}
+  </select><br><br>
+
+  <button class="btn" type="submit">Update</button>
+</form>
+{% endblock %}
+
