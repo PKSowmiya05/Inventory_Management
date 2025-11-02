@@ -55,3 +55,8 @@ python app.py
 You can watch the full working demo here :
 https://drive.google.com/file/d/1zqOkxzfZnoA2_ciscnNeX7Os_Gts3VX4/view?usp=drivesdk
 
+
+
+Live Demo  
+Click here to view the deployed app :  https://inventory-management-gziw.onrender.com/
+
