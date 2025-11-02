@@ -50,6 +50,16 @@ python app.py
 5️) Open in browser :
  http://127.0.0.1:5000
 
+ Output Screenshots
+ <img width="1919" height="1078" alt="image" src="https://github.com/user-attachments/assets/de201c11-b93e-42f9-a1f2-5e2b7302154b" />
+ 
+ <img width="1919" height="1072" alt="image" src="https://github.com/user-attachments/assets/4e7ac004-bf7c-4ce0-8ce0-1872db770d57" />
+
+
+ <img width="1895" height="1065" alt="image" src="https://github.com/user-attachments/assets/dbd47179-74f8-4050-90e1-ef9e19a28d48" />
+
+
+
  Demo Video
  
 You can watch the full working demo here :
