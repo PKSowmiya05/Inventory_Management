@@ -22,28 +22,8 @@ Whenever a product is moved, its count automatically updates in the report page.
 - Version Control:Git & GitHub  
 
 
- Project Structure
- Inventory_Management/
-│
-├── app.py → main Flask file (routes and logic)
-├── models.py → database models (Product, Location, Movement)
-├── requirements.txt → dependencies
-├── Procfile → deployment setup for Render
-├── README.md
-├── .gitignore
-│
-├── templates/ → HTML pages
-│ ├── base.html
-│ ├── add_product.html
-│ ├── products.html
-│ ├── add_location.html
-│ ├── locations.html
-│ ├── add_movement.html
-│ ├── movements.html
-│ └── report.html
-│
-└── static/ → CSS and images
-└── style.css
+<img width="572" height="573" alt="image" src="https://github.com/user-attachments/assets/630fbd63-9579-41ff-b936-d17f929bdea6" />
+
 
  Working Logic 
 1. Add Product Page → You can add product name, quantity, and select a location from the dropdown.  
@@ -54,19 +34,24 @@ So, it basically acts like a mini warehouse manager.
 
 How to Run This Project Locally
 
-1) Clone this project
-git clone https://github.com/PKSowmiya05/Inventory_Management.git
-2️) Create virtual environment and activate it
+1) Clone this project :
+git clone https://github.com/PKSowmiya05/Inventory_Management.
+
+2️) Create virtual environment and activate it :
 python -m venv venv
-venv\Scripts\activate      # for Windows
-3️) Install the required dependencies
+venv\Scripts\activate      
+
+3️) Install the required dependencies :
 pip install -r requirements.txt
-4️) Run the Flask app
+
+4️) Run the Flask app :
 python app.py
-5️) Open in browser
+
+5️) Open in browser :
  http://127.0.0.1:5000
 
  Demo Video
-You can watch the full working demo here 
+ 
+You can watch the full working demo here :
 https://drive.google.com/file/d/1zqOkxzfZnoA2_ciscnNeX7Os_Gts3VX4/view?usp=drivesdk
 
