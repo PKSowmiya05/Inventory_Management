@@ -1,21 +1,18 @@
 
-/* Layout basics: keep footer at the bottom and navbar at top */
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
-  /* Theme defaults */
   background: var(--secondary-bg);
   color: var(--text-dark);
-  margin: 0; /* let header/footer span full width */
+  margin: 0;
 }
-/* Theme variables */
 :root {
-  --primary-bluegray: #4C7C89; /* headers, highlights */
-  --secondary-bg: #F8F9FA; /* main page background */
-  --nav-hero-bg: rgba(0,0,0,0.6); /* navbar over hero */
-  --btn-primary: #FF8C00; /* primary orange */
+  --primary-bluegray: #4C7C89;
+  --secondary-bg: #F8F9FA;
+  --nav-hero-bg: rgba(0,0,0,0.6);
+  --btn-primary: #FF8C00;
   --btn-primary-hover: #E67E00;
   --accent-teal: #00A8B5;
   --text-dark: #333333;
@@ -27,8 +24,7 @@ body.home-page {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  position: relative; /* allow absolute overlay inside home */
-  /* leave space for the fixed/semi-transparent navbar so content doesn't sit under it */
+  position: relative;
   padding-top: 72px;
 }
 
@@ -46,7 +42,6 @@ body.home-page nav a {
   color: var(--text-light);
 }
 
-/* Page-specific button color for hero area (keeps the home overlay buttons bright orange) */
 body.home-page .btn,
 body.home-page .btn.small {
   background: var(--btn-primary);
@@ -60,7 +55,6 @@ nav {
   margin-bottom: 0;
   position: sticky;
   top: 0;
-  /* default navbar for non-hero pages: use primary blue-gray */
   background: var(--primary-bluegray);
   padding: 12px 20px;
   border-bottom: 1px solid rgba(0,0,0,0.06);
@@ -117,7 +111,6 @@ th {
   text-align: center;
   max-width: 800px;
   margin: 40px auto;
-  /* translucent panel to keep text/buttons readable on top of the bg */
   background: rgba(248,249,250,0.86);
   padding: 28px 24px;
   border-radius: 8px;
@@ -133,7 +126,6 @@ th {
 
 .home-overlay-buttons {
   position: absolute;
-  /* place below the fixed nav so both are visible */
   top: 72px;
   left: 18px;
   z-index: 20;
@@ -154,7 +146,7 @@ th {
    a media query falls back to stacked labels on narrow screens. */
 .container:has(> h2 + form) {
   display: flex;
-  flex-direction: column; /* stack heading above the form */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 160px);
@@ -168,11 +160,9 @@ th {
   box-shadow: 0 6px 18px rgba(20,30,40,0.08);
   box-sizing: border-box;
 }
-/* hide the <br> used in templates so labels can sit inline */
 .container:has(> h2 + form) form br {
   display: none;
 }
-/* Label left, input/select right on same line */
 .container:has(> h2 + form) form label {
   display: inline-block;
   width: 140px;
@@ -193,18 +183,15 @@ th {
   box-sizing: border-box;
   margin-bottom: 12px;
 }
-/* keep spacing between pairs */
 .container:has(> h2 + form) form label + input,
 .container:has(> h2 + form) form label + select {
   margin-bottom: 12px;
 }
-/* Buttons centered below the form */
 .container:has(> h2 + form) form .btn {
   display: block;
   width: auto;
   margin: 18px auto 0 auto;
 }
-/* small screens: stack labels above inputs */
 @media (max-width: 640px) {
   .container:has(> h2 + form) {
     align-items: flex-start;
@@ -226,9 +213,9 @@ th {
 /* Headings for add/edit forms: centered above the form with gentle spacing */
 .container:has(> h2 + form) > h2 {
   text-align: center;
-  margin: 0 0 18px 0; /* space between heading and card/form */
+  margin: 0 0 18px 0;
   font-weight: 700;
-  font-size: 24px; /* human-friendly size between 22-26px */
+  font-size: 24px;
   color: var(--primary-bluegray);
 }
 .flash {

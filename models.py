@@ -20,7 +20,7 @@ class Location(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
     address = db.Column(db.String(250))
-    # relationship to products so we can count products per location easily
+    
     products = db.relationship('Product', backref='location', lazy='dynamic')
 
     def __repr__(self):
